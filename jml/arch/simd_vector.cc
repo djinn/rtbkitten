@@ -43,7 +43,7 @@ int ptr_align(const X * p)
 } JML_PURE_FN
 
 
-void vec_scale(const float * x, float k, float * r, size_t n)
+int vec_scale(const float * x, float k, float * r, size_t n)
 {
     v4sf kkkk = vec_splat(k);
     unsigned i = 0;
@@ -73,6 +73,7 @@ void vec_scale(const float * x, float k, float * r, size_t n)
     }
     
     for (; i < n;  ++i) r[i] = k * x[i];
+    return 0;
 }
 
 void vec_add(const float * x, const float * y, float * r, size_t n)

@@ -17,7 +17,6 @@
 #include <boost/bind.hpp>
 #include "jml/arch/cpu_info.h"
 
-
 using namespace std;
 
 

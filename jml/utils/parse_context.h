@@ -560,9 +560,9 @@ protected:
         ~Token()
         {
             //std::cerr << "deleting token " << this << std::endl;
-            if (context)
-                throw Exception("Parse_Context::Token::~Token(): "
-                                "active token was destroyed");
+	  if (context) {}
+	      //                throw Exception("Parse_Context::Token::~Token(): "
+	      //                "active token was destroyed");
         }
         
         void apply()
@@ -656,7 +656,7 @@ public:
             }
             catch (...) {
                 remove();
-                throw;
+		// throw;
             }
         }
 
@@ -689,8 +689,8 @@ public:
 
         std::string captured() const
         {
-            if (!context)
-                throw ML::Exception("hold token hasn't captured any text");
+	  if (!context) {}
+	      //                throw ML::Exception("hold token hasn't captured any text");
 
             return context->text_between(ofs, context->get_offset());
         }

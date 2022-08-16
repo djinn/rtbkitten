@@ -18,7 +18,7 @@
 #include "jml/arch/demangle.h"
 #include <set>
 #include "live_counting_obj.h"
-
+#include <boost/next_prior.hpp>
 using namespace ML;
 using namespace std;
 

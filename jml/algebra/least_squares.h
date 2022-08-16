@@ -23,7 +23,6 @@
 #include "jml/arch/simd_vector.h"
 #include "jml/utils/worker_task.h"
 
-
 namespace ML {
 
 
@@ -410,7 +409,7 @@ ridge_regression(const boost::multi_array<Float, 2> & A,
     vector<Iteration> iterations;
 
     for (unsigned i = 0; current_lambda >= 1e-14;  ++i, current_lambda /= 10.0) {
-        Iteration iter;
+      Iteration iter = Iteration{};
         iter.lambda = current_lambda;
         iterations.push_back(iter);
     };
@@ -720,7 +719,6 @@ irls(const distribution<Float> & y, const boost::multi_array<Float, 2> & x,
      const Regressor & regressor)
 {
     using namespace std;
-
     bool debug = false;
 
     typedef distribution<Float> Vector;
@@ -741,6 +739,7 @@ irls(const distribution<Float> & y, const boost::multi_array<Float, 2> & x,
     Vector mu = (y + 0.5) / 2;                // link input
     Vector b(nv, 0.0);                        // ls fit parameters
     Vector b2;                                // last ls fit parameters
+    
     Vector eta = link.forward(mu);            // link output
     Vector offset(nx, 0.0);                   // known values (??)
     distribution<Float> weights = w;          // sample weights

@@ -117,24 +117,24 @@ struct JML_PACKED Header
     template<typename Source>
     static Header read(Source& src)
     {
-        Header head;
+        Header *head;
         lz4::read(src, &head, sizeof(head));
 
-        if (head.magic != MagicConst)
+        if (head->magic != MagicConst)
             throw lz4_error("invalid magic number");
 
-        if (head.version() != 1)
+        if (head->version() != 1)
             throw lz4_error("unsupported lz4 version");
 
-        if (!head.blockIndependence())
+        if (!head->blockIndependence())
             throw lz4_error("unsupported option: block dependence");
 
-        checkBlockId(head.blockId());
+        checkBlockId(head->blockId());
 
-        if (head.checkBits != head.checksumOptions())
+        if (head->checkBits != head->checksumOptions())
             throw lz4_error("corrupted options");
 
-        return std::move(head);
+        return std::move(*head);
     }
 
     template<typename Sink>

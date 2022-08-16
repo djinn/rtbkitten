@@ -46,11 +46,12 @@ inline void wrong_sizes_exception(const char * op, int size1, int size2)
 }
 
 
+
 template<typename F, class Underlying = std::vector<F> >
 class distribution : public Underlying {
     typedef Underlying parent;
 public:
-    distribution() {}
+  distribution():parent(std::vector<F>{}){}
 
     distribution(std::initializer_list<F> list)
         : parent(std::move(list))
@@ -100,7 +101,7 @@ public:
         return *this;
     }
 #endif // use fill instead
-
+  
     void fill(const F & val)
     {
         std::fill(this->begin(), this->end(), val);
@@ -125,7 +126,7 @@ public:
     distribution \
     operator op (F val) const \
     { \
-        distribution result(this->size()); \
+        distribution result(this->size());		      \
         for (unsigned i = 0;  i < this->size();  ++i) \
             result[i] = this->operator [] (i) op val; \
         return result; \

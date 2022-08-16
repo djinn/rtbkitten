@@ -27,9 +27,9 @@ std::string md5HashToHex(const char * buf, size_t nBytes)
 {
     typedef CryptoPP::Weak::MD5 Hash;
     size_t digestLen = Hash::DIGESTSIZE;
-    byte digest[digestLen];
+    CryptoPP::byte digest[digestLen];
     Hash hash;
-    hash.CalculateDigest(digest, (byte *)buf, nBytes);
+    hash.CalculateDigest(digest, (CryptoPP::byte *)buf, nBytes);
 
     string md5;
     for (unsigned i = 0;  i < digestLen;  ++i) {
@@ -48,9 +48,9 @@ std::string md5HashToBase64(const char * buf, size_t nBytes)
 {
     typedef CryptoPP::Weak::MD5 Hash;
     size_t digestLen = Hash::DIGESTSIZE;
-    byte digest[digestLen];
+    CryptoPP::byte digest[digestLen];
     Hash hash;
-    hash.CalculateDigest(digest, (byte *)buf, nBytes);
+    hash.CalculateDigest(digest, (CryptoPP::byte *)buf, nBytes);
 
     // base64
     char outBuf[256];
@@ -58,7 +58,7 @@ std::string md5HashToBase64(const char * buf, size_t nBytes)
     CryptoPP::Base64Encoder baseEncoder;
     baseEncoder.Put(digest, digestLen);
     baseEncoder.MessageEnd();
-    size_t got = baseEncoder.Get((byte *)outBuf, 256);
+    size_t got = baseEncoder.Get((CryptoPP::byte *)outBuf, 256);
     outBuf[got] = 0;
 
     //cerr << "got " << got << " characters" << endl;
@@ -72,10 +72,10 @@ std::string hmacSha1Base64(const std::string & stringToSign,
     typedef CryptoPP::SHA1 Hash;
     
     size_t digestLen = Hash::DIGESTSIZE;
-    byte digest[digestLen];
-    CryptoPP::HMAC<Hash> hmac((byte *)privateKey.c_str(), privateKey.length());
+    CryptoPP::byte digest[digestLen];
+    CryptoPP::HMAC<Hash> hmac((CryptoPP::byte *)privateKey.c_str(), privateKey.length());
     hmac.CalculateDigest(digest,
-                         (byte *)stringToSign.c_str(),
+                         (CryptoPP::byte *)stringToSign.c_str(),
                          stringToSign.length());
 
     // base64
@@ -84,7 +84,7 @@ std::string hmacSha1Base64(const std::string & stringToSign,
     CryptoPP::Base64Encoder baseEncoder;
     baseEncoder.Put(digest, digestLen);
     baseEncoder.MessageEnd();
-    size_t got = baseEncoder.Get((byte *)outBuf, 256);
+    size_t got = baseEncoder.Get((CryptoPP::byte *)outBuf, 256);
     outBuf[got] = 0;
     string base64digest(outBuf, outBuf + got - 1);
         return base64digest;
@@ -96,10 +96,10 @@ std::string hmacSha256Base64(const std::string & stringToSign,
     typedef CryptoPP::SHA256 Hash;
     
     size_t digestLen = Hash::DIGESTSIZE;
-    byte digest[digestLen];
-    CryptoPP::HMAC<Hash> hmac((byte *)privateKey.c_str(), privateKey.length());
+    CryptoPP::byte digest[digestLen];
+    CryptoPP::HMAC<Hash> hmac((CryptoPP::byte *)privateKey.c_str(), privateKey.length());
     hmac.CalculateDigest(digest,
-                         (byte *)stringToSign.c_str(),
+                         (CryptoPP::byte *)stringToSign.c_str(),
                          stringToSign.length());
 
     // base64
@@ -108,7 +108,7 @@ std::string hmacSha256Base64(const std::string & stringToSign,
     CryptoPP::Base64Encoder baseEncoder;
     baseEncoder.Put(digest, digestLen);
     baseEncoder.MessageEnd();
-    size_t got = baseEncoder.Get((byte *)outBuf, 256);
+    size_t got = baseEncoder.Get((CryptoPP::byte *)outBuf, 256);
     outBuf[got] = 0;
     string base64digest(outBuf, outBuf + got - 1);
         return base64digest;

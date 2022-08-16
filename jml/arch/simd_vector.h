@@ -32,7 +32,7 @@ namespace SIMD {
 namespace Generic {
 
 /* Float versions */
-void vec_scale(const float * x, float factor, float * r, size_t n);
+int vec_scale(const float * x, float factor, float * r, size_t n);
 void vec_add(const float * x, const float * y, float * r, size_t n);
 void vec_add(const float * x, float k, const float * y, float * r, size_t n);
 

@@ -28,6 +28,7 @@
 #include <fstream>
 #include <memory>
 #include <map>
+#include <functional>
 
 namespace ML {
 

@@ -11,6 +11,7 @@
 #include "threads.h"
 #include "exception.h"
 #include "fslock.h"
+#include <functional>
 
 using namespace std;
 using namespace ML;

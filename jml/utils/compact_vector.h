@@ -93,9 +93,9 @@ public:
         : size_(other.size_), is_internal_(other.is_internal_)
     {
         if (other.is_internal_) {
-            uninitialized_move_and_destroy(other.internal(),
-                                           other.internal() + other.size_,
-                                           internal());
+	  uninitialized_move_and_destroy((Data *) other.internal(),
+					 (Data *) other.internal() + other.size_,
+                                         (Data *)  internal());
         }
         else {
             ext.pointer_ = other.ext.pointer_;
@@ -143,17 +143,17 @@ public:
 
             // Swap common internal elements
             for (size_type i = 0;  i < size() && i < other.size();  ++i)
-                std::swap(internal()[i], other.internal()[i]);
+	      std::swap(internal()[i], other.internal()[i]);
 
             // Copy leftovers
             for (size_type i = size();  i < other.size();  ++i) {
-                new (internal() + i) Data(other.internal()[i]);
-                other.internal()[i].~Data();
+	      new (internal() + i) Data(other.internal()[i]);
+	      other.internal()[i].~Data();
             }
 
             for (size_type i = other.size();  i < size();  ++i) {
-                new (other.internal() + i) Data(internal()[i]);
-                internal()[i].~Data();
+	      new ( other.internal() + i) Data(internal()[i]);
+	      internal()[i].~Data();
             }
             
             swap_size(other);
@@ -188,7 +188,7 @@ public:
 
     void clear()
     {
-        Data * p = data();
+      Data * p = (Data *) data();
         for (size_type i = 0;  i < size_;  ++i)
             p[i].~Data();
 
@@ -445,7 +445,7 @@ private:
     union {
         struct {
             char internal_[sizeof(Data) * Internal];
-        } JML_PACKED itl;
+        } itl;
         struct {
             Pointer pointer_;
             Size capacity_;

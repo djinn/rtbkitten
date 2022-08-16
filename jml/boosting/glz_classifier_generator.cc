@@ -236,7 +236,7 @@ train_weighted(Thread_Context & thread_context,
         
     distribution<double> model(nx2, 0.0);  // to initialise weights, correct
     vector<distribution<double> > w(nl, model);       // weights for each label
-    vector<distribution<double> > correct(nl, model); // correct values
+    vector<distribution<double>> correct(nl, model); // correct values
 
     cerr << "setup: " << t.elapsed() << endl;
     t.restart();

@@ -17,7 +17,7 @@
 #include "jml/utils/file_functions.h"
 #include <cassert>
 #include <boost/scoped_array.hpp>
-
+#include <boost/next_prior.hpp>
 
 using namespace std;
 

@@ -236,12 +236,12 @@ BOOST_AUTO_TEST_CASE( vec_prod_float_test )
 
 float get_eps(float)
 {
-    return 1e-7;
+    return 1e-6;
 }
 
 double get_eps(double)
 {
-    return 1e-10;
+    return 1e-8;
 }
 
 template<typename T>
@@ -781,7 +781,7 @@ void vec_kl_test_case(int nvals)
 
     double r = SIMD::vec_kl(p, q, nvals);
 
-    BOOST_CHECK_CLOSE(r, r2, 0.00001);
+    BOOST_CHECK_CLOSE(r, r2, 0.0001);
 }
 
 BOOST_AUTO_TEST_CASE( vec_kl_test )
