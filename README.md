@@ -1,16 +1,12 @@
-RTBkit
-======
+rtbkitten
+=========
+rtbkitten is Real Time bidder for display ads. It is opensource high performance software written in C++. The code is based on original RTBKit which has not been updated for years. In current form it is broken and it does not compile. The development team is working hard to make is available soon for Intel/AMD x86_64 line of products very soon. 
 
-RTBkit is an open-source software package that allows you to create and deploy a Real Time Bidder for display advertising. 
+- [ ] Fix for compiling on x86_64 on Linux
+- [ ] Integrate CI/CD for unit tests validation
+- [ ] Docker Image creation
+- [ ] Updating the deployment for AWS Cloud
+- [ ] Reduce the footprint of code and used dependencies instead
+- [ ] Port to aarch64 like AWS Graviton2, Ampere Altera
+- [ ] Move from V8 and node to QuickJS for Javascript integration
 
-http://rtbkit.org/
-
-[Getting Started](https://github.com/rtbkit/rtbkit/wiki/Getting%20Started) (Installation and build instructions)
-
-
-Beeswax
-======
-
-RTBKit is provided by Beeswax, the creator of the **Bidder-as-a-Service**. Beeswax provides a single-tenant cloud-based RTB Bidder that includes access to supply, reporting, a user interface and REST API, and everything else you need to deploy a custom RTB stack.
-
-[Learn More about Beeswax](https://www.beeswax.com/products/)
