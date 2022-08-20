@@ -527,7 +527,7 @@ public:
 
     judyl_typed & operator = (const judyl_typed & other)
     {
-        if (&other == this) return;
+        if (&other == this) return true;
         clear();
         insert(const_pair_iterator(other.begin()),
                const_pair_iterator(other.end()));
@@ -744,7 +744,7 @@ public:
 
     judyl_typed & operator = (const judyl_typed & other)
     {
-        if (&other == this) return;
+        if (&other == this) return true;
         clear();
         insert(const_pair_iterator(other.begin()),
                const_pair_iterator(other.end()));

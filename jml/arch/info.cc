@@ -123,14 +123,14 @@ size_t num_open_files()
 
     size_t result = 0;
     
-    dirent entry;
-    for (dirent * current = &entry;  current;  ++result) {
-        int res = readdir_r(dfd, &entry, &current);
-        if (res != 0)
-            throw Exception("num_open_files(): readdir_r: "
-                            + string(strerror(errno)));
-    }
-
+    dirent *entry, *current;
+    do {
+	entry = readdir(dfd);
+	current = entry;
+	result++;
+    } while (current != NULL);
+    
+    
     return result;
 }
 

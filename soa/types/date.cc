@@ -978,7 +978,7 @@ match_time(ML::Parse_Context & context,
     fractional_sec = modf(second, &full_sec);
     
     using namespace boost::posix_time;
-    result = (hours(hour) + minutes(minute) + seconds(full_sec)).total_seconds()
+    result = (hours(hour) + minutes(minute) + seconds(static_cast<long>(full_sec))).total_seconds()
         + fractional_sec;
     token.ignore();
     return true;
@@ -1051,7 +1051,7 @@ expect_time(ML::Parse_Context & context, const std::string & format)
     fractional_sec = modf(second, &full_sec);
     
     using namespace boost::posix_time;
-    return (hours(hour) + minutes(minute) + seconds(full_sec)).total_seconds()
+    return (hours(hour) + minutes(minute) + seconds(static_cast<long>(full_sec))).total_seconds()
         + fractional_sec;
 }
 

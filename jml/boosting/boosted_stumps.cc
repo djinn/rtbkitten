@@ -515,7 +515,7 @@ namespace {
 static const std::string BOOSTED_STUMPS_MAGIC = "BOOSTED_STUMPS";
 static const compact_size_t BOOSTED_STUMPS_VERSION = 4;
 
-void serialize_dist(const distribution<float> & dist,
+  void __attribute__((unused)) serialize_dist(const distribution<float> & dist,
                     DB::Store_Writer & store)
 {
     bool non_zero = false;
@@ -533,7 +533,7 @@ void serialize_dist(const distribution<float> & dist,
     else store << compact_const(0);
 }
 
-void reconstitute_dist(distribution<float> & dist,
+  void __attribute__((unused)) reconstitute_dist(distribution<float> & dist,
                        DB::Store_Reader & store,
                        size_t nl)
 {

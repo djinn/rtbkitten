@@ -1,7 +1,7 @@
 CXX ?= g++
-CXXFLAGS ?= $(INCLUDE) -pipe -Wall -Werror -Wno-sign-compare -Woverloaded-virtual -fPIC -m64 -ggdb -fno-omit-frame-pointer $(foreach dir,$(LOCAL_INCLUDE_DIR),-I$(dir)) -std=c++0x -Wno-deprecated-declarations
+CXXFLAGS ?= $(INCLUDE) -pipe -Wall -Werror -Wno-sign-compare -Woverloaded-virtual -fPIC -m64 -ggdb -fno-omit-frame-pointer $(foreach dir,$(LOCAL_INCLUDE_DIR),-I$(dir)) -std=c++0x -Wno-deprecated-declaration -DUCHAR_TYPE=char16_t 
 CXXLINKFLAGS = -rdynamic $(foreach DIR,$(PWD)/$(BIN) $(PWD)/$(LIB) $(LOCAL_LIB_DIR),-L$(DIR) -Wl,--rpath-link,$(DIR)) -Wl,--rpath,\$$ORIGIN/../bin -Wl,--rpath,\$$ORIGIN/../lib -Wl,--copy-dt-needed-entries -Wl,--no-as-needed
-CXXLIBRARYFLAGS = -shared $(CXXLINKFLAGS) -lpthread
+CXXLIBRARYFLAGS = -shared $(CXXLINKFLAGS) -L/usr/local/lib -lpthread -lboost_timer -lcityhash
 CXXEXEFLAGS =$(CXXLINKFLAGS) -lpthread
 CXXEXEPOSTFLAGS = $(if $(MEMORY_ALLOC_LIBRARY),-l$(MEMORY_ALLOC_LIBRARY))
 CXXNODEBUGFLAGS := -O3 -DBOOST_DISABLE_ASSERTS -DNDEBUG 

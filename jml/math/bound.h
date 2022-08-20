@@ -31,6 +31,7 @@ template<class X, class Y, class Z>
 typename float_traits3<X, Y, Z>::return_type
 bound(X x, Y min, Z max)
 {
+  
     typename float_traits3<X, Y, Z>::return_type result = x;
     if (result < min) result = min;
     if (result > max) result = max;

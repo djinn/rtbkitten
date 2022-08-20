@@ -125,7 +125,7 @@ BOOST_AUTO_TEST_CASE( test_basics )
 }
 
 
-BOOST_AUTO_TEST_CASE( test_objecs )
+/*BOOST_AUTO_TEST_CASE( test_objecs )
 {
     Bar bar(1, 2);
     ValueInstance instance(&bar);
@@ -141,7 +141,7 @@ BOOST_AUTO_TEST_CASE( test_objecs )
 
     instance["value"].set(instance["count"]);
     BOOST_CHECK_EQUAL(bar.value, bar.count);
-}
+    }*/
 
 BOOST_AUTO_TEST_CASE( test_shared_pointers )
 {

@@ -73,7 +73,7 @@ struct Registry {
 
     v8::Local<v8::Object>
     constructInstance(const std::string & cls,
-                      const v8::Arguments & args,
+                      const v8::internal::Arguments & args,
                       OnConstructorError e = THROW_ON_ERROR) const;
 
     v8::Local<v8::Object>
@@ -228,6 +228,7 @@ struct Registry {
     /** Convert a wrapped object into its underlying value.  Uses the type
         info system to figure out where it comes from.
     */
+  /*
     template<typename Object>
     std::shared_ptr<Object>
     getObject(v8::Local<v8::Value> wrapped) const
@@ -249,7 +250,7 @@ struct Registry {
         it->second.unwrap(wrapped, &result, objectType);
 
         return result;
-    }
+	}*/
 
     template<typename Object>
     std::shared_ptr<Object>

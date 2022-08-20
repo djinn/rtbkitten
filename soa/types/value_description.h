@@ -683,12 +683,12 @@ regme;
 
 inline constexpr void * addOffset(void * base, ssize_t offset)
 {
-    return reinterpret_cast<char *>(base) + offset;
+  return (char *)base + offset;
 }
 
 inline constexpr const void * addOffset(const void * base, ssize_t offset)
 {
-    return reinterpret_cast<const char *>(base) + offset;
+  return (char *)base + offset;
 }
 
 
@@ -1195,7 +1195,7 @@ struct EnumDescription: public ValueDescriptionT<Enum> {
 
         // TODO: description
     }
-
+#pragma GCC diagnostic ignored "-Wrange-loop-construct"
     virtual const std::vector<std::string> getEnumKeys() const {
         std::vector<std::string> res;
         for (const auto it: print) {
@@ -1203,6 +1203,7 @@ struct EnumDescription: public ValueDescriptionT<Enum> {
         }
         return res;
     }
+
 
     std::unordered_map<std::string, Enum> parse;
     std::map<Enum, std::string> print;

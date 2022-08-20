@@ -15,7 +15,7 @@
 #include "jml/arch/exception.h"
 #include "jml/algebra/matrix_ops.h"
 #include "svd.h"
-#include <boost/timer.hpp>
+#include <boost/timer/timer.hpp>
 #include "jml/arch/timers.h"
 #include "lapack.h"
 #include <cmath>
@@ -729,7 +729,8 @@ irls(const distribution<Float> & y, const boost::multi_array<Float, 2> & x,
     
     size_t nv = x.shape()[0];                     // number of variables
     size_t nx = x.shape()[1];                     // number of examples
-
+    
+    
     if (y.size() != nx || w.size() != nx)
         throw Exception("incompatible data sizes");
 
@@ -740,7 +741,8 @@ irls(const distribution<Float> & y, const boost::multi_array<Float, 2> & x,
     Vector b(nv, 0.0);                        // ls fit parameters
     Vector b2;                                // last ls fit parameters
     
-    Vector eta = link.forward(mu);            // link output
+    //Vector eta = link.forward(mu);            // link output
+    Vector eta = y;
     Vector offset(nx, 0.0);                   // known values (??)
     distribution<Float> weights = w;          // sample weights
 

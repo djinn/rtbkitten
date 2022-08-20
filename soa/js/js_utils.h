@@ -49,18 +49,18 @@ namespace JS {
 std::string cstr(const std::string & str);
 
 std::string cstr(const JSValue & val);
-
+x
 template<typename T>
 std::string cstr(const v8::Local<T> & str)
 {
     return cstr(JSValue(str));
 }
 
-template<typename T>
-std::string cstr(const v8::Handle<T> & str)
+template<typename T_>
+std::string cstr(const v8::Handle<T_> & str)
 {
     return cstr(JSValue(str));
-}
+    }
 
 struct JSPassException : public std::exception {
 //    v8::Persistent<v8::Value> jsException;
@@ -115,12 +115,12 @@ extern struct NullHandle {
     {
         return v8::Handle<T>();
     }
-
+  /*
     template<typename T> 
     operator v8::Local<T>()
     {
         return v8::Local<T>();
-    }
+	}*/
 
 } NULL_HANDLE;
 

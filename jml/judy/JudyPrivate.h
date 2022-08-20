@@ -230,7 +230,7 @@ typedef int bool_t;
 #define TRACEMI  1      // malloc calls in JudyMallocIF.c.
 #define TRACEMF  1      // malloc calls at a lower level in JudyMalloc.c.
 #endif
-
+#pragma GCC diagnostic ignored "-Wstringop-overflow"
 
 // SUPPORT FOR DEBUG-ONLY CODE:
 //
@@ -1340,7 +1340,7 @@ assert((Word_t) (OFFSET) <= (Word_t) (POP1));                   \
 
 #define JU_DELETECOPY_ODD(PDEST,PSOURCE,POP1,OFFSET,cIS)                \
         assert((long) (POP1) > 0);                                      \
-        assert((Word_t) (OFFSET) < (Word_t) (POP1));                    \
+        assert((Word_t) (OFFSET) < (Word_t) (POP1));			\
         {                                                               \
             uint8_t *_Pdest   = (uint8_t *) (PDEST);                    \
             uint8_t *_Psource = (uint8_t *) (PSOURCE);                  \
@@ -1351,8 +1351,8 @@ assert((Word_t) (OFFSET) <= (Word_t) (POP1));                   \
                                                                         \
             _Psource += (cIS);                                          \
                                                                         \
-            for (b_off += (cIS); b_off < ((POP1) * (cIS)); ++b_off)     \
-                *_Pdest++ = *_Psource++;                                \
+            for (b_off += (cIS); b_off < ((POP1) * (cIS)); ++b_off) 	\
+	      *_Pdest++ = *_Psource++;					\
         }
 
 

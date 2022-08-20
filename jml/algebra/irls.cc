@@ -8,7 +8,7 @@
 
 #include "irls.h"
 #include "glz.h"
-#include <boost/timer.hpp>
+#include <boost/timer/timer.hpp>
 #include "jml/stats/distribution_simd.h"
 #include "jml/utils/vector_utils.h"
 #include "jml/boosting/config_impl.h"
@@ -19,7 +19,6 @@
 #include "jml/utils/string_functions.h"
 #include "jml/algebra/lapack.h"
 #include <boost/version.hpp>
-
 using namespace std;
 
 #ifndef UNDER_VALGRIND
@@ -75,7 +74,7 @@ vector<int> remove_dependent_impl(boost::multi_array<FloatIn, 2> & x,
                                   std::vector<distribution<FloatCalc> > & y,
                                   double tolerance)
 {
-    boost::timer t;
+  boost::timer::cpu_timer t;
     size_t nrows = x.shape()[0], ncols = x.shape()[1];
     /* Perform an orthogonalization to determine which variables are
        linearly dependent.  This procedure uses the Modified Gram-Schmidt

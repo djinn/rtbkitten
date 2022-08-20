@@ -313,6 +313,8 @@ public:
     }
 };
 
+#pragma GCC diagnostic ignored "-Wint-in-bool-context"
+
 #define DIST_DIST_OP(op) \
 template<class F1, class F2, class Underlying1, class Underlying2>     \
 distribution<F1, Underlying1>           \

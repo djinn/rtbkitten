@@ -772,7 +772,7 @@ rbprop(const F * inputs,
         = hidden_rep * e;
 
     distribution<F> d_updates(ni);
-    d_updates = multiply_r<F>(W, hidden_rep_e) * c_updates;
+   d_updates = multiply_r<F>(W, hidden_rep_e) * c_updates;
 
     CHECK_NOT_NAN(d_updates);
 
@@ -882,7 +882,8 @@ rbprop(const F * inputs,
     }
 
     distribution<F> cleared_value_updates(ni);
-    cleared_value_updates = isnan(noisy_input) * (W * b_updates);
+    auto mul = (W * b_updates);
+    cleared_value_updates = isnan(noisy_input) * mul;
         
     if (forward.missing_values == MV_INPUT) {
         gradient.vector(2, "missing_replacements")

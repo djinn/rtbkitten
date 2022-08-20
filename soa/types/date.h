@@ -10,7 +10,7 @@
 
 #include <chrono>
 #include <string>
-#include "boost/date_time/posix_time/posix_time.hpp"
+#include <boost/date_time/posix_time/posix_time.hpp>
 #include "jml/utils/parse_context.h"
 #include "jml/db/persistent_fwd.h"
 
@@ -372,8 +372,8 @@ struct Date {
     boost::posix_time::ptime toBoost() const
     {
         return boost::posix_time::from_time_t(toTimeT())
-            + boost::posix_time::microseconds
-            (1000000 * fractionalSeconds());
+	  + boost::posix_time::microseconds(
+					    static_cast<long>(1000000 * fractionalSeconds()));
     }
     
     /** Convert to a std::chrono::time_point<std::chrono::system_clock>

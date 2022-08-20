@@ -12,7 +12,7 @@
 #include "jml/utils/floating_point.h"
 #include "jml/utils/pair_utils.h"
 #include "jml/arch/exception.h"
-
+#include <boost/next_prior.hpp>
 using namespace std;
 
 

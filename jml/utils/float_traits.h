@@ -41,8 +41,14 @@ struct float_traits<F, F> {
 
 template<typename F1, typename F2, typename F3>
 struct float_traits3 {
-    typedef jml_typeof(*((F1*)(0)) + (*((F2*)(0))) + (*((F3*)(0)))) return_type;
+  typedef F1 return_type;
 };
+
+
+
+  //struct float_traits3 {
+  //typedef jml_typeof(*((F1*)(0)) + (*((F2*)(0))) + (*((F3*)(0)))) return_type;
+  //};
 
 template <typename F>
 struct float_traits3<F, F, F> {

@@ -173,6 +173,17 @@ public:
     }
 
     JML_ALWAYS_INLINE JML_COMPUTE_METHOD
+    Index_Iterator & operator -- () { --n;  return *this; }
+
+  
+    JML_ALWAYS_INLINE JML_COMPUTE_METHOD
+    Index_Iterator operator -- (int)
+    {
+        Index_Iterator result(*this);  operator -- ();  return result;
+    }
+  
+  
+    JML_ALWAYS_INLINE JML_COMPUTE_METHOD
     Index_Iterator & operator += (int i) { n += i;  return *this; }
 
     JML_ALWAYS_INLINE JML_COMPUTE_METHOD

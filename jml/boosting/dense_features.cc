@@ -568,7 +568,7 @@ make_feature(const std::string & name, const Feature_Info & info)
     return Feature(add_feature(name, info));
 }
 
-Feature
+Feature 
 Dense_Feature_Space::
 get_feature(const std::string & name) const
 {
@@ -807,7 +807,7 @@ get_sizes(Parse_Context & context,
 }
 
 boost::tuple<size_t, size_t, string>
-get_sizes(const std::string & filename,
+__attribute__((unused)) get_sizes(const std::string & filename,
           vector<unsigned> & row_start_ofs)
 {
     Parse_Context context(filename);

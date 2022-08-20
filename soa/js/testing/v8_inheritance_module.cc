@@ -9,7 +9,7 @@
 #include "soa/js/js_wrapped.h"
 #include "soa/js/js_utils.h"
 #include "soa/js/js_registry.h"
-#include "v8.h"
+#include "node/v8.h"
 #include "jml/compiler/compiler.h"
 
 using namespace v8;
@@ -50,7 +50,7 @@ struct BaseJS : public JSWrapped2<Base, BaseJS, BaseName, Module> {
     {
     }
 
-    BaseJS(const v8::Arguments & args)
+  BaseJS(const v8::internal::Arguments & args)
     {
         wrap(args.This(), new Base());
     }
@@ -70,7 +70,7 @@ struct BaseJS : public JSWrapped2<Base, BaseJS, BaseName, Module> {
     }
 
     static Handle<Value>
-    New(const Arguments & args)
+    New(const v8::internal::Arguments & args)
     {
         try {
             new BaseJS(args);
@@ -79,7 +79,7 @@ struct BaseJS : public JSWrapped2<Base, BaseJS, BaseName, Module> {
     }
 
     static Handle<Value>
-    type(const Arguments & args)
+    type(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {
@@ -88,7 +88,7 @@ struct BaseJS : public JSWrapped2<Base, BaseJS, BaseName, Module> {
     }
     
     static Handle<Value>
-    number(const Arguments & args)
+    number(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {
@@ -97,7 +97,7 @@ struct BaseJS : public JSWrapped2<Base, BaseJS, BaseName, Module> {
     }
 
     static Handle<Value>
-    number2(const Arguments & args)
+    number2(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {
@@ -106,7 +106,7 @@ struct BaseJS : public JSWrapped2<Base, BaseJS, BaseName, Module> {
     }
 
     static Handle<Value>
-    otherType(const Arguments & args)
+    otherType(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {
@@ -128,7 +128,7 @@ struct DerivedJS
     {
     }
 
-    DerivedJS(const v8::Arguments & args)
+  DerivedJS(const v8::internal::Arguments & args)
     {
         wrap(args.This(), new Derived());
     }
@@ -146,7 +146,7 @@ struct DerivedJS
     }
 
     static Handle<Value>
-    New(const Arguments & args)
+    New(const v8::internal::Arguments & args)
     {
         try {
             new DerivedJS(args);
@@ -155,7 +155,7 @@ struct DerivedJS
     }
 
     static Handle<Value>
-    number(const Arguments & args)
+    number(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {
@@ -164,7 +164,7 @@ struct DerivedJS
     }
 
     static Handle<Value>
-    otherTypeDerived(const Arguments & args)
+    otherTypeDerived(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {
@@ -183,7 +183,7 @@ struct ReDerivedJS
     : public JSWrapped3<ReDerived, ReDerivedJS, DerivedJS, ReDerivedName,
                         Module> {
 
-    ReDerivedJS(const v8::Arguments & args)
+  ReDerivedJS(const v8::internal::Arguments & args)
     {
         wrap(args.This(), new ReDerived());
     }
@@ -200,7 +200,7 @@ struct ReDerivedJS
     }
 
     static Handle<Value>
-    New(const Arguments & args)
+    New(const v8::internal::Arguments & args)
     {
         try {
             new ReDerivedJS(args);
@@ -209,7 +209,7 @@ struct ReDerivedJS
     }
 
     static Handle<Value>
-    number(const Arguments & args)
+    number(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {
@@ -240,7 +240,7 @@ struct Base2JS : public JSWrapped2<Base2, Base2JS, Base2Name, Module> {
     {
     }
 
-    Base2JS(const v8::Arguments & args)
+  Base2JS(const v8::internal::Arguments & args)
     {
         wrap(args.This(), new Base2());
     }
@@ -259,7 +259,7 @@ struct Base2JS : public JSWrapped2<Base2, Base2JS, Base2Name, Module> {
     }
 
     static Handle<Value>
-    New(const Arguments & args)
+    New(const v8::internal::Arguments & args)
     {
         try {
             new BaseJS(args);
@@ -268,7 +268,7 @@ struct Base2JS : public JSWrapped2<Base2, Base2JS, Base2Name, Module> {
     }
 
     static Handle<Value>
-    type(const Arguments & args)
+    type(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {
@@ -277,7 +277,7 @@ struct Base2JS : public JSWrapped2<Base2, Base2JS, Base2Name, Module> {
     }
     
     static Handle<Value>
-    number(const Arguments & args)
+    number(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {
@@ -286,7 +286,7 @@ struct Base2JS : public JSWrapped2<Base2, Base2JS, Base2Name, Module> {
     }
 
     static Handle<Value>
-    number2(const Arguments & args)
+    number2(const v8::internal::Arguments & args)
     {
         HandleScope scope;
         try {

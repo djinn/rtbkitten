@@ -182,7 +182,7 @@ protected:
     */
     template<typename Wrapper>
     static v8::Handle<v8::Value>
-    createExtendedObject(const v8::Arguments & args)
+    createExtendedObject(const v8::internal::Arguments & args)
     {
         // Create the new object
         v8::Handle<v8::Value> res = Wrapper::New(args);
@@ -211,7 +211,7 @@ protected:
     */
     template<typename Wrapper>
     static v8::Handle<v8::Value>
-    extendImpl(const v8::Arguments & args)
+    extendImpl(const v8::internal::Arguments & args)
     {
         // called with a single argument, which is the function (class) to
         // extend from.
@@ -350,7 +350,7 @@ struct JSWrapped : public JSWrappedBase {
     }
 
     static inline JSWrapped *
-    getWrapper(const v8::Arguments & args,
+    getWrapper(const v8::internal::Arguments & args,
                v8::Persistent<v8::FunctionTemplate> tmpl,
                const char * className,
                const char * module)
