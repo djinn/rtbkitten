@@ -1,5 +1,5 @@
-rtbkitten
-=========
+rtbkitten - Opensource rtb platform
+===================================
 rtbkitten is Real Time bidder for display ads. It is opensource high performance software written in C++. The code is based on original RTBKit which has not been updated for years. In current form it is broken and it does not compile. The development team is working hard to make is available soon for Intel/AMD x86_64 line of products very soon. 
 
 - [ ] Fix for compiling on x86_64 on Linux
